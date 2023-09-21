@@ -12,11 +12,8 @@ namespace ShopTest.Data.Entities
         public Decimal Price { get; set; }
         public int Count { get; set; }
         [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
-        public Decimal TotalPrice 
-        {
-            get { return Price * Count; }
-            private set {  }
-        }
+        public Decimal TotalPrice { get; private set; }       
         public Category Category { get; set; }
+        public ICollection<Purchase> Purchase { get; set; }
     }
 }
