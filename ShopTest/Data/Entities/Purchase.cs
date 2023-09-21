@@ -12,7 +12,7 @@ namespace ShopTest.Data.Entities
         public Client Client { get; set; }
         public ICollection<Product> Products { get; set; }
         [NotMapped]
-        public Decimal TotalPrice
+        public Double TotalPrice
         {
             get { return Products.Sum(x => x.TotalPrice); }
             private set { }
