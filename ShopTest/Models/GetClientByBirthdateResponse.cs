@@ -11,6 +11,6 @@ namespace ShopTest.Models
 
     public class GetClientByBirthdateResponse
     {
-        public IEnumerable<ClientDto> Clients { get; set; };
+        public IEnumerable<ClientDto> Clients { get; set; }
     }  
 }
