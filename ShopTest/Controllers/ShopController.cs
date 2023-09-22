@@ -46,9 +46,19 @@ namespace ShopTest.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetCategoriesByClientId([FromQuery]long clientId)
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<IActionResult> GetCategoriesFrequenciesByClientId([FromQuery]long clientId)
         {
-            throw new NotImplementedException();
+            var client = (await _repository.GetClientIdWithEagerLoading(clientId)).FirstOrDefault();
+
+            if (client == null)
+                return NotFound();
+
+            var products = await _repository.GetProductsByClientId(clientId);
+
+            var categoriesFrequency = await _repository.GetCategoriesFrequencyByClientId(clientId);
+
+            return Ok(new GetCategoriesFrequenciesResponse { CategoriesFrequencies = categoriesFrequency, Products = products });
         }
     }
 }

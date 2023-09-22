@@ -9,7 +9,7 @@ namespace ShopTest.AutoMapper
     {
         public AppMappingProfile()
         {
-            CreateMap<Client, ClientDto>();
+            CreateMap<Client, ClientDto>();               
         }
     }
 }
