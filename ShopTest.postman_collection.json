@@ -1,0 +1,68 @@
+{
+	"info": {
+		"_postman_id": "209e4c7a-0384-4c99-a155-149ea0cd2443",
+		"name": "ShopTest",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18160702"
+	},
+	"item": [
+		{
+			"name": "GetClientsByBirthdate sample 1",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:7164/Shop/GetClientsByBirthdate?birthDate=1980/05/14",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7164",
+					"path": [
+						"Shop",
+						"GetClientsByBirthdate"
+					],
+					"query": [
+						{
+							"key": "birthDate",
+							"value": "1980/05/14"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetClientsByBirthdate sample 2",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "GetLastClients sample",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "GetCategoriesFrequenciesByClientId sample 1",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "GetCategoriesFrequenciesByClientId sample 2",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	]
+}
