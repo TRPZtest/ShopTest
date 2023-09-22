@@ -29,20 +29,7 @@ namespace ShopTest.Data
                 .AddDays(-daysAgo)))
                 .ToListAsync();
             return clients;
-        }
-        
-        public async Task<List<Client>> GetClientIdWithEagerLoading(long clientId)
-        {
-            var clients = await _context.Clients                
-                .AsNoTracking()
-                .Where(x => x.Id == clientId)
-                .Include(x => x.Purchases)
-                .ThenInclude(x => x.Products)
-                .ThenInclude(x => x.Category)
-                .ToListAsync();
-
-            return clients;
-        }
+        }              
 
         public async Task<List<Product>> GetProductsByClientId(long clientId)
         {
@@ -69,6 +56,13 @@ namespace ShopTest.Data
                 .ToDictionaryAsync(x => x.Key, x => x.Count());
 
             return categoriesFrequencies;
-        }       
+        }
+
+        public async Task<List<Client>> GetClientById(long clientId)
+        {
+            var clients = await _context.Clients.Where(x => x.Id!= clientId).ToListAsync();
+
+            return clients;
+        }
     }
 }

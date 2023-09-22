@@ -10,6 +10,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.editorconfig = .editorconfig
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShopModuleTests", "ShopModuleTests\ShopModuleTests.csproj", "{4EFC11DE-CDED-401A-BF80-32D97D023E69}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -20,6 +22,10 @@ Global
 		{1E4D936A-C1E2-4498-8F0E-B1E2646A7A72}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1E4D936A-C1E2-4498-8F0E-B1E2646A7A72}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1E4D936A-C1E2-4498-8F0E-B1E2646A7A72}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4EFC11DE-CDED-401A-BF80-32D97D023E69}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4EFC11DE-CDED-401A-BF80-32D97D023E69}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4EFC11DE-CDED-401A-BF80-32D97D023E69}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4EFC11DE-CDED-401A-BF80-32D97D023E69}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

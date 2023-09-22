@@ -3,13 +3,15 @@ using ShopTest.Data.Entities;
 
 namespace ShopTest.Data
 {
-    public partial class ShopDbContext : DbContext
+    public class ShopDbContext : DbContext
     {
-        public DbSet<Client> Clients { get; set; }
-        public DbSet<Product> Products { get; set; }
-        public DbSet<Purchase> Purchases { get; set; }
-        public DbSet<Category> Categories { get; set; }
+        public virtual DbSet<Client> Clients { get; set; }
+        public virtual DbSet<Product> Products { get; set; }
+        public virtual DbSet<Purchase> Purchases { get; set; }
+        public virtual DbSet<Category> Categories { get; set; }
 
+        public ShopDbContext() { }
+       
         public ShopDbContext(DbContextOptions<ShopDbContext> options) : base(options) { }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

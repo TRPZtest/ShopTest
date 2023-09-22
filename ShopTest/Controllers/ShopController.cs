@@ -49,7 +49,7 @@ namespace ShopTest.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> GetCategoriesFrequenciesByClientId([FromQuery]long clientId)
         {
-            var client = (await _repository.GetClientIdWithEagerLoading(clientId)).FirstOrDefault();
+            var client = (await _repository.GetClientById(clientId)).FirstOrDefault();
 
             if (client == null)
                 return NotFound();
