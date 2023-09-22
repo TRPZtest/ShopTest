@@ -1,7 +1,7 @@
 # ShopTest
 Hello!
 To run application just use Run Development launch profile.
-This contains ShopTest.postman_collection.json file wich you can import to Postman as requests collection to test this API.
+This repositorcontains ShopTest.postman_collection.json file wich you can import to Postman as requests collection to test this API.
 
 This ASP application uses Azure Sql Db with seeded data so it works without local Db.
 You can explore it using connection string in appsettings.Development.json
