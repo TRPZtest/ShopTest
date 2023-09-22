@@ -9,12 +9,20 @@ namespace ShopTest.Data
 
         public ShopRepository(ShopDbContext dbContext) 
         {
-            _context = dbContext;
+            _context = dbContext;   
         }  
 
         public async Task<List<Client>> GetCLientsByDirthDate(DateTime date)
         {
-            return await _context.Clients.Where(x => x.BirthDate.Date == date.Date).ToListAsync();
+            return await _context.Clients
+                .AsNoTracking()
+                .Where(x => x.BirthDate.Date == date.Date)
+                .ToListAsync();
+        }
+
+        public async Task<List<Client>> GetLastClients(int daysAgo)
+        {
+            throw new NotImplementedException();
         }
     }
 }

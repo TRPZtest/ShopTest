@@ -27,12 +27,12 @@ namespace ShopTest.Migrations
                     b.Property<long>("ProductsId")
                         .HasColumnType("bigint");
 
-                    b.Property<long>("PurchaseId")
+                    b.Property<long>("PurchasesId")
                         .HasColumnType("bigint");
 
-                    b.HasKey("ProductsId", "PurchaseId");
+                    b.HasKey("ProductsId", "PurchasesId");
 
-                    b.HasIndex("PurchaseId");
+                    b.HasIndex("PurchasesId");
 
                     b.ToTable("ProductPurchase");
                 });
@@ -138,12 +138,12 @@ namespace ShopTest.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<decimal>("Price")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<double>("Price")
+                        .HasColumnType("float");
 
-                    b.Property<decimal>("TotalPrice")
+                    b.Property<double>("TotalPrice")
                         .ValueGeneratedOnAddOrUpdate()
-                        .HasColumnType("decimal(18,2)")
+                        .HasColumnType("float")
                         .HasComputedColumnSql("Price * Count", true);
 
                     b.HasKey("Id");
@@ -184,7 +184,7 @@ namespace ShopTest.Migrations
 
                     b.HasOne("ShopTest.Data.Entities.Purchase", null)
                         .WithMany()
-                        .HasForeignKey("PurchaseId")
+                        .HasForeignKey("PurchasesId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

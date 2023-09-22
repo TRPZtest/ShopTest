@@ -12,8 +12,8 @@ using ShopTest.Data;
 namespace ShopTest.Migrations
 {
     [DbContext(typeof(ShopDbContext))]
-    [Migration("20230921154855_Fullname")]
-    partial class Fullname
+    [Migration("20230922005730_initial")]
+    partial class initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -30,12 +30,12 @@ namespace ShopTest.Migrations
                     b.Property<long>("ProductsId")
                         .HasColumnType("bigint");
 
-                    b.Property<long>("PurchaseId")
+                    b.Property<long>("PurchasesId")
                         .HasColumnType("bigint");
 
-                    b.HasKey("ProductsId", "PurchaseId");
+                    b.HasKey("ProductsId", "PurchasesId");
 
-                    b.HasIndex("PurchaseId");
+                    b.HasIndex("PurchasesId");
 
                     b.ToTable("ProductPurchase");
                 });
@@ -92,6 +92,35 @@ namespace ShopTest.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Clients");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = -1L,
+                            BirthDate = new DateTime(1980, 5, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            LastName = "Doe",
+                            Name = "John",
+                            Patronimic = "Smith",
+                            RegistrationDate = new DateTime(2020, 2, 10, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Id = -2L,
+                            BirthDate = new DateTime(1992, 9, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            LastName = "Smith",
+                            Name = "Jane",
+                            Patronimic = "Johnson",
+                            RegistrationDate = new DateTime(2018, 7, 5, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Id = -3L,
+                            BirthDate = new DateTime(1975, 12, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            LastName = "Johnson",
+                            Name = "Alice",
+                            Patronimic = "Brown",
+                            RegistrationDate = new DateTime(2015, 3, 18, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        });
                 });
 
             modelBuilder.Entity("ShopTest.Data.Entities.Product", b =>
@@ -112,12 +141,12 @@ namespace ShopTest.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<decimal>("Price")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<double>("Price")
+                        .HasColumnType("float");
 
-                    b.Property<decimal>("TotalPrice")
+                    b.Property<double>("TotalPrice")
                         .ValueGeneratedOnAddOrUpdate()
-                        .HasColumnType("decimal(18,2)")
+                        .HasColumnType("float")
                         .HasComputedColumnSql("Price * Count", true);
 
                     b.HasKey("Id");
@@ -158,7 +187,7 @@ namespace ShopTest.Migrations
 
                     b.HasOne("ShopTest.Data.Entities.Purchase", null)
                         .WithMany()
-                        .HasForeignKey("PurchaseId")
+                        .HasForeignKey("PurchasesId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

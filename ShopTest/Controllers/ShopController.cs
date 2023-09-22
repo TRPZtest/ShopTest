@@ -20,16 +20,35 @@ namespace ShopTest.Controllers
         }
 
         [HttpGet]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(GetClientByBirthdateResponse))]
-        public async Task<IActionResult> GetClientByBirthdate([FromQuery]DateTime birthDate)
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(GetClientResponse))]
+        public async Task<IActionResult> GetClientsByBirthdate([FromQuery]DateTime birthDate)
         {
             var clients = await _repository.GetCLientsByDirthDate(birthDate);
 
             var clientsDtoList = _mapper.Map<List<ClientDto>>(clients);
 
-            var response = new GetClientByBirthdateResponse { Clients = clientsDtoList };
+            var response = new GetClientResponse { Clients = clientsDtoList };
             
             return Ok(response);
+        }
+
+        [HttpGet]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(GetClientResponse))]
+        public async Task<IActionResult> GetLastClients([FromQuery]int daysAgo)
+        {
+            var clients = await _repository.GetLastClients(daysAgo);
+
+            var clientsDtoList = _mapper.Map<List<ClientDto>>(clients);
+
+            var response = new GetClientResponse { Clients = clientsDtoList };
+
+            return Ok(response);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetCategoriesByClientId([FromQuery]long clientId)
+        {
+            throw new NotImplementedException();
         }
     }
 }

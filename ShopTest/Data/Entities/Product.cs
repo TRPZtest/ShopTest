@@ -14,6 +14,6 @@ namespace ShopTest.Data.Entities
         [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
         public Double TotalPrice { get; private set; }       
         public Category Category { get; set; }
-        public ICollection<Purchase> Purchase { get; set; }
+        public ICollection<Purchase> Purchases { get; set; }
     }
 }

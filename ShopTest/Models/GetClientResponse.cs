@@ -9,7 +9,7 @@ namespace ShopTest.Models
         public string Fullname { get; set; }
     }
 
-    public class GetClientByBirthdateResponse
+    public class GetClientResponse
     {
         public IEnumerable<ClientDto> Clients { get; set; }
     }  
