@@ -22,7 +22,13 @@ namespace ShopTest.Data
 
         public async Task<List<Client>> GetLastClients(int daysAgo)
         {
-            throw new NotImplementedException();
-        }
+            var clients = await _context.Clients
+                .AsNoTracking()
+                .Where(x => x.Purchases
+                .Any(y => y.Date >= DateTime.UtcNow
+                .AddDays(-daysAgo)))
+                .ToListAsync();
+            return clients;
+        }       
     }
 }

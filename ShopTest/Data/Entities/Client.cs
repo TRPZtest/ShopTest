@@ -15,5 +15,6 @@ namespace ShopTest.Data.Entities
         public string FullName { get; private set; }
         public DateTime BirthDate { get; set; }
         public DateTime RegistrationDate { get; set; }
+        public ICollection<Purchase> Purchases { get; set; }
     }
 }

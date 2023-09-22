@@ -8,8 +8,7 @@ namespace ShopTest.Data.Entities
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public long Id { get; set; }
-        public DateTime Date { get; set; }
-        public Client Client { get; set; }
+        public DateTime Date { get; set; }    
         public ICollection<Product> Products { get; set; }
         [NotMapped]
         public Double TotalPrice
