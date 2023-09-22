@@ -13,16 +13,14 @@ namespace ShopTest.Data
         public ShopDbContext(DbContextOptions<ShopDbContext> options) : base(options) { }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
+        {           
             modelBuilder.Entity<Product>()
                 .Property(x => x.TotalPrice)
                 .HasComputedColumnSql("Price * Count", true);
 
             modelBuilder.Entity<Client>()
                 .Property(x => x.FullName)
-                .HasComputedColumnSql("[LastName] + ' ' + [Name] +  ' ' + [Patronimic]");
-            
-            AddSampleData(modelBuilder);
+                .HasComputedColumnSql("[LastName] + ' ' + [Name] +  ' ' + [Patronimic]");                        
         }
     }
 }

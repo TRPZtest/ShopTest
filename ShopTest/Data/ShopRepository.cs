@@ -50,8 +50,9 @@ namespace ShopTest.Data
                 .AsNoTracking()
                 .Where(x => x.Id == clientId)
                 .SelectMany(x => x.Purchases)
-                .SelectMany(x => x.Products)
-                .Distinct().ToListAsync();
+                .SelectMany(x => x.Products)              
+                .Include(x => x.Category)
+                .ToListAsync();
 
             return products;
         }
@@ -60,6 +61,7 @@ namespace ShopTest.Data
         {
             var categoriesFrequencies = await _context.Clients
                 .AsNoTracking()
+                .Where (x => x.Id == clientId)
                 .SelectMany(x => x.Purchases)
                 .SelectMany(x => x.Products)
                 .Select(x => x.Category)
